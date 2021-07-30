@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import MainContainer from './containers/mainContainer';
 
 const App = () => {
   return (
     <div>
-      <div> This is React hooks</div>
-      <div> testing stil? </div>
+      <MainContainer />
     </div>
   );
 };
