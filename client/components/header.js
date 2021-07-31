@@ -1,5 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
-import Popup from '../popUps/topRight';
+import Popup from '../popUps/popup';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faUtensils, faHamburger, faDrumstickBite,faPizzaSlice, faCat, faIdBadge, faAt, faPencilRuler, faDice } = require('@fortawesome/free-solid-svg-icons');
