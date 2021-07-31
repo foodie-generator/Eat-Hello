@@ -1,5 +1,5 @@
 import React, { Component, useEffect } from 'react';
-import { ProgressPlugin } from 'webpack';
+
 
 const Popup = () => {
   return (

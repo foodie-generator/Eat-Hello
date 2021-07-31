@@ -15,7 +15,7 @@ const Header = () => {
     })
   }
   function popUpContent(){
-    return popupState ? <Popup display={popupState}/> : null
+    return popupState ? <Popup display={popupState} /> : null
   }
   return (
     <div className='header'>
