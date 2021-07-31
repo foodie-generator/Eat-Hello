@@ -1,7 +1,7 @@
 import React, { Component, useEffect } from 'react';
 
 
-const Popup = () => {
+const Popup = (props) => {
   return (
     <div>
       <h1 > test </h1>

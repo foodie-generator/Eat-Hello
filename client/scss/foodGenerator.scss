@@ -1,5 +1,16 @@
 .food_generator {
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
   align-items: center;
+  height: 80px;
+  padding: 20px 100px;
+}
+
+#generator_title {
+  font-size: $font-logo;
+}
+
+#generator_menu {
+  font-size: $font-logo;
+  margin-right: 300px;
 }
