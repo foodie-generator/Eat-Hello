@@ -11,7 +11,7 @@ const MainContainer = () => {
       <Header />
       <div className='main'>
         <FoodGenerator menu={menu} />
-        <ContentContainer setMenu={setMenu} />
+        <ContentContainer setMenu={setMenu} menu={menu} />
       </div>
     </div>
   );
