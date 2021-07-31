@@ -6,14 +6,18 @@ const mongoose = require('mongoose');
 const userController = require('./controllers/userController');
 const cookieParser = require('cookie-parser');
 const cuisineRouter = require('./routes/cuisine');
+
 // activate the cookieParser 
-app.use(cookieParser())
+app.use(cookieParser());
 ​
 ​
-// automatically parse urlencoded body content from incoming requests and place it in req.body
-app.use(bodyParser.urlencoded({ extended: true }));
-​
-​
+// activate the parser
+​app.use(express.json());
+
+
+// a start point for the routes
+app.use('/api', cuisineRouter);
+
 ​
 if (process.env.NODE_ENV === 'production') {
   app.use('/build', express.static(path.join(__dirname, '../build')));
