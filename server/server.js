@@ -6,14 +6,11 @@ const mongoose = require('mongoose');
 const userController = require('./controllers/userController');
 const cookieParser = require('cookie-parser');
 const cuisineRouter = require('./routes/cuisine');
-const cors = require('cors');
-
-app.use(cors({origin:true}))
 
 // activate the cookieParser 
 app.use(cookieParser());
-​
-​
+
+
 // activate the parser
 ​app.use(express.json());
 

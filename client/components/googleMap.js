@@ -11,9 +11,9 @@ import forkSvg from '../Images/utensils-solid.svg'
 
 const GoogleMap = ({menu}) => {
   console.log('this is menu', menu)
-  fetch('https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+toronto+canada&key=AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw',{
-   
-  })
+  fetch('https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+toronto+canada&key=AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw')
+  //fetch to endpoint
+  
     // method: 'GET',
     // headers:{
     //   'Content-Type': 'application/json; charset=UTF-8'
