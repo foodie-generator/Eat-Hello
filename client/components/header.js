@@ -1,8 +1,22 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component, useEffect, useState } from 'react';
+import Popup from '../popUps/topRight';
+
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faUtensils, faHamburger, faDrumstickBite,faPizzaSlice, faCat, faIdBadge, faAt, faPencilRuler, faDice } = require('@fortawesome/free-solid-svg-icons');
 
 const Header = () => {
+
+  const [popupState, popupSet] = useState(0);
+  function togglePopUpHandler(destination){  //toggle false and 'login'
+    console.log('popup ', destination)
+    popupSet(()=>{
+      if(popupState !== 0) return 0;
+      return destination
+    })
+  }
+  function popUpContent(){
+    return popupState ? <Popup display={popupState}/> : null
+  }
   return (
     <div className='header'>
       <div className="headerBar" >
@@ -26,11 +40,25 @@ const Header = () => {
         {/* start of header bar Right */}
         <div className="headerBar-Right">
           <div className="headIcons-Right">
-            <FontAwesomeIcon icon={faCat} size="2x"/>
-            <FontAwesomeIcon icon={faAt} size="2x"/>
-            <FontAwesomeIcon icon={faPencilRuler} size="2x"/>
-            <FontAwesomeIcon icon={faIdBadge} size="2x"/>
+
+            <div className="cat-Button" onClick={()=>togglePopUpHandler('cat')}>
+              <FontAwesomeIcon icon={faCat} size="2x"/>
+            </div>
+            
+            <div className="social-Button" onClick={()=>togglePopUpHandler('social')}>
+              <FontAwesomeIcon icon={faAt} size="2x"/>
+            </div>
+
+            <div className="author-Button" onClick={()=>togglePopUpHandler('author')}>
+              <FontAwesomeIcon icon={faPencilRuler} size="2x"/>
+            </div>
+            
+            <div className="signIn-Button" onClick={()=>togglePopUpHandler('signIn')}>
+              <FontAwesomeIcon icon={faIdBadge} size="2x"/>
+            </div>
           </div>
+          {/* Drop Down Menu */}
+          {popUpContent()}
         </div>
       </div>
     </div>
