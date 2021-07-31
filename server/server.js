@@ -5,15 +5,23 @@ const PORT = 3000;
 //const mongoose = require('mongoose');
 //const userController = require('./controllers/userController');
 //const cookieParser = require('cookie-parser');
+const googleUrl = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+toronto+canada&key=AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw';
 const cuisineRouter = require('./routes/cuisine');
+const mapController = require('./controllers/mapController');
 
 // activate the cookieParser 
 //app.use(cookieParser());
 app.use(express.json());
 
+app.get('/annie', mapController.testing, (req, res) => {
+  return res.json({
+    status: true,
+    payload: res.locals.data
+  });
+});
+
 // a start point for the routes
 app.use('/api', cuisineRouter);
-
 
 if (process.env.NODE_ENV === 'production') {
   app.use('/build', express.static(path.join(__dirname, '../build')));
@@ -22,7 +30,7 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 // error handlers
-app.use('*',(req, res) => res.status(404).sendFile(path.join(__dirname, '/client/404.html')));
+//app.use('*',(req, res) => res.status(404).sendFile(path.join(__dirname, '/client/404.html')));
 
 // global error handler 
 app.use(function (err, req, res, next) {
