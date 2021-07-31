@@ -9,7 +9,18 @@ import forkSvg from '../Images/utensils-solid.svg'
 /* Options for how the map should initially render. */
 
 
-const GoogleMap = () => {
+const GoogleMap = ({menu}) => {
+  console.log('this is menu', menu)
+  fetch('https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+toronto+canada&key=AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw',{
+   
+  })
+    // method: 'GET',
+    // headers:{
+    //   'Content-Type': 'application/json; charset=UTF-8'
+    // },
+    // body: JSON.stringify('https://maps.googleapis.com/maps/api/place/textsearch/json?query=chinese&key=AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw')
+    // .then(response => response.json())
+  .then(data => console.log(data));
 
   const loader = new Loader({
     apiKey: "AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw",

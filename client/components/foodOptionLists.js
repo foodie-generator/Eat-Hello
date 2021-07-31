@@ -52,7 +52,6 @@ const FoodOptionLists = ({ setMenu }) => {
           className='add_menu'
           type='text'
           placeholder='add options'
-          ds
           onChange={(e) => setClickAdd(e.target.value)}
         />
         <button className='add_menuBtn' onClick={() => addMenuBtn()}>
