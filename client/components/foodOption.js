@@ -1,7 +1,7 @@
 import React, { Component, useEffect } from 'react';
 
-const FoodOption = () => {
-  return <li className='food_option'> food name</li>;
+const FoodOption = ({ name, id }) => {
+  return <li className='food_option'> • {name}</li>;
 };
 
 export default FoodOption;

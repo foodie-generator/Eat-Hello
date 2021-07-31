@@ -2,10 +2,10 @@ import React, { Component, useEffect } from 'react';
 import FoodOptionLists from '../components/foodOptionLists';
 import GoogleMapArea from '../components/googleMapArea';
 
-const ContentContainer = () => {
+const ContentContainer = ({ setMenu }) => {
   return (
     <div className='content_container'>
-      <FoodOptionLists />
+      <FoodOptionLists setMenu={setMenu} />
       <GoogleMapArea />
     </div>
   );
