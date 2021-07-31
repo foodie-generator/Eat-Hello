@@ -4,12 +4,12 @@ import { Wrapper, Status } from "@googlemaps/react-wrapper";
 
 
 
-const GoogleMapArea = () => {
-  
+const GoogleMapArea = ({menu}) => {
+
   return (
     // <Wrapper apiKey = 'AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw' >
     <div id='map'>
-      <GoogleMap/>
+      <GoogleMap menu={menu}/>
     </div>
     // </Wrapper>
   );
