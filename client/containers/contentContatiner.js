@@ -2,11 +2,11 @@ import React, { Component, useEffect } from 'react';
 import FoodOptionLists from '../components/foodOptionLists';
 import GoogleMapArea from '../components/googleMapArea';
 
-const ContentContainer = () => {
+const ContentContainer = ({ menu, setMenu }) => {
   return (
     <div className='content_container'>
-      <FoodOptionLists />
-      <GoogleMapArea />
+      <FoodOptionLists setMenu={setMenu} />
+      <GoogleMapArea menu={menu} />
     </div>
   );
 };

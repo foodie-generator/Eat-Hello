@@ -1,8 +1,6 @@
 import React, { Component, useState } from 'react';
 
-const FoodGenerator = () => {
-  const [menu, setMenu] = useState('Hmm... any idea? 🤔');
-
+const FoodGenerator = ({ menu }) => {
   return (
     <div className='food_generator'>
       <div id='generator_title'>what should we eat?</div>
