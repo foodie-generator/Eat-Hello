@@ -4,7 +4,7 @@ import FoodOption from './foodOption';
 const FoodOptionLists = () => {
   return (
     <div className='food_option_box'>
-      <ul calssName='food_option_lists'>
+      <ul className='food_option_lists'>
         <FoodOption />
         <FoodOption />
         <FoodOption />
