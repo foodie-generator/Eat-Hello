@@ -1,3 +1,6 @@
+.header div{
+  z-index: 5;
+}
 
 .header {
   //display: flex;
@@ -23,4 +26,25 @@
 }
 .headerBar-Left svg{
   margin-left: 1.25rem;
+}
+
+// POP up styling
+.popUp div{
+  z-index: 2;
+}
+.popUp{
+  background-color: darken($Primary,25%);
+  position: absolute;
+  height: 400px;
+  width: 250px;
+  margin-top: 45px;
+  top: 50px;
+  
+}
+
+.popUpBody{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  
 }
