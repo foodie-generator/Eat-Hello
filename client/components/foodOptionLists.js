@@ -11,8 +11,8 @@ const FoodOptionLists = () => {
         <FoodOption />
         <FoodOption />
       </ul>
-      <input type='text' placeholder='add options' />
-      <button>Add Option</button>
+      <input className='add_menu' type='text' placeholder='add options' />
+      <button className='add_menuBtn'>Add Option</button>
     </div>
   );
 };
