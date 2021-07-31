@@ -1,11 +1,17 @@
 import React, { Component, useEffect } from 'react';
 import GoogleMap from './googleMap';
+import { Wrapper, Status } from "@googlemaps/react-wrapper";
+
+
 
 const GoogleMapArea = () => {
+  
   return (
-    <div className='google_map_area'>
-      <GoogleMap />
+    // <Wrapper apiKey = 'AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw' >
+    <div id='map'>
+      <GoogleMap/>
     </div>
+    // </Wrapper>
   );
 };
 
