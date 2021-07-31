@@ -1,5 +1,5 @@
 import React, { Component, useEffect } from 'react';
-import GoogleMap from './googlemap';
+import GoogleMap from './googleMap';
 
 const GoogleMapArea = () => {
   return (

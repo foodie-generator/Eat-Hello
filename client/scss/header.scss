@@ -1,8 +1,26 @@
+
 .header {
-  display: flex;
+  //display: flex;
+  //justify-content: space-around;
+  padding: 1.5rem 1.5rem;
+  background-color: darken($Primary,10%);
+
+}
+.headName{
+  margin-left: 2rem;
+}
+.headerBar{
+  display:flex;
   justify-content: space-between;
-  padding: 14px 140px;
-  height: 50px;
-  font-size: $font-large;
-  border-bottom: 2px solid orange;
+}
+.headerBar div{
+  display: flex;
+  align-items: center;
+}
+
+.headerBar-Right svg{
+  margin-left: 1.25rem;
+}
+.headerBar-Left svg{
+  margin-left: 1.25rem;
 }
