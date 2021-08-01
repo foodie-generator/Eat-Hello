@@ -14,14 +14,16 @@ const mapController = require('./controllers/mapController');
 app.use(express.json());
 
 app.get('/annie', mapController.testing, (req, res) => {
+  //console.log('req.locals.data: ', req.locals.data);
+  //console.log('payload is: ', res.locals.data.json());
   return res.json({
     status: true,
-    payload: res.locals.data
+    payload: req.locals.data
   });
 });
 
 // a start point for the routes
-app.use('/api', cuisineRouter);
+//app.use('/api', cuisineRouter);
 
 if (process.env.NODE_ENV === 'production') {
   app.use('/build', express.static(path.join(__dirname, '../build')));

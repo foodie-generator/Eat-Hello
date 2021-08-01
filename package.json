@@ -38,6 +38,7 @@
     "@babel/preset-react": "^7.14.5",
     "@googlemaps/js-api-loader": "^1.12.1",
     "@googlemaps/react-wrapper": "^1.1.0",
+    "axios": "^0.21.1",
     "babel-eslint": "^10.1.0",
     "babel-loader": "^8.2.2",
     "concurrently": "^6.0.2",
