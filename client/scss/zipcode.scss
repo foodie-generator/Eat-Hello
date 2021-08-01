@@ -1,0 +1,34 @@
+.zipcode_container {
+  margin-top: 15px;
+  text-align: center;
+  font-size: $font-large;
+}
+.zipcode_input_Btn {
+  margin: 10px;
+}
+
+.add_zipcode {
+  width: 200px;
+  height: 30px;
+  margin: 0 20px;
+  outline: none;
+  border-radius: 10px;
+  padding: 10px;
+  border: 2px solid darken($Primary, 10%);
+}
+
+.zipcode_btn {
+  width: 50px;
+  height: 35px;
+  border-radius: 10px;
+  background-color: lighten($Primary, 3%);
+  font-size: $font-large;
+}
+
+.zipcode_btn:hover {
+  background-color: darken($Primary, 10%);
+}
+
+.zipcode_btn:focus {
+  background-color: darken($Primary, 10%);
+}
