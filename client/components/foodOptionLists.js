@@ -20,7 +20,7 @@ const FoodListMaker = (foodOptions) => {
   });
 };
 
-const FoodOptionLists = ({ setMenu }) => {
+const FoodOptionLists = ({ setMenu, cancelPopup }) => {
   const [clickAdd, setClickAdd] = useState('');
   const [optionArr, setOptionArr] = useState(foodOptions);
   const input = document.querySelector('.add_menu');
@@ -42,6 +42,12 @@ const FoodOptionLists = ({ setMenu }) => {
     const getMenu = Math.floor(Math.random() * copyArr.length);
     const ourMenu = copyArr[getMenu];
     setMenu(ourMenu);
+    cancelPopup();
+  };
+
+  const cancelMenu = () => {
+    setMenu('');
+    cancelPopup();
   };
 
   return (
@@ -59,6 +65,9 @@ const FoodOptionLists = ({ setMenu }) => {
         </button>
         <button className='show_menuBtn' onClick={() => showMenu()}>
           Show me the menu!!
+        </button>
+        <button className='cancel_menuBtn' onClick={() => cancelMenu()}>
+          Cancel
         </button>
       </div>
     </div>

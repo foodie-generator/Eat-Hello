@@ -1,17 +1,19 @@
 import React, { Component, useEffect } from 'react';
 import GoogleMap from './googleMap';
-import { Wrapper, Status } from "@googlemaps/react-wrapper";
+import { Wrapper, Status } from '@googlemaps/react-wrapper';
 
-
-
-const GoogleMapArea = ({menu}) => {
-
+const GoogleMapArea = ({ menu, zipcode, setClick }) => {
   return (
-    // <Wrapper apiKey = 'AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw' >
-    <div id='map'>
-      <GoogleMap menu={menu}/>
+    <div className='google'>
+      <div className='google_map_area'>
+        {/* // <Wrapper apiKey = 'AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw' > */}
+        <GoogleMap menu={menu} zipcode={zipcode} />
+        {/* // </Wrapper> */}
+      </div>
+      <button className='map_btn' onClick={setClick}>
+        Close
+      </button>
     </div>
-    // </Wrapper>
   );
 };
 

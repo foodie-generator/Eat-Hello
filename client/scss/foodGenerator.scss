@@ -1,6 +1,6 @@
 .food_generator {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   height: 80px;
   padding: 20px 100px;
@@ -12,5 +12,7 @@
 
 #generator_menu {
   font-size: $font-logo;
-  margin-right: 300px;
+  margin-top: 20px;
+  color: darken($Primary, 30%);
+  font-weight: bold;
 }
