@@ -1,0 +1,22 @@
+.history_popUp div {
+  z-index: 2;
+}
+.history_popUp {
+  background-color: desaturate($Secondary, 28%);
+  border-left: 2px solid $Primary;
+  border-bottom: 2px solid $Primary;
+  border-right: 2px solid $Primary;
+  border-bottom-left-radius: 0.25rem;
+  position: absolute;
+  height: 400px;
+  width: 250px;
+  margin-top: 45px;
+  top: 50px;
+}
+
+.history_popUpBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

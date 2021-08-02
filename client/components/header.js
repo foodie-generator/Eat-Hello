@@ -1,5 +1,6 @@
 import React, { Component, useEffect, useState } from 'react';
 import Popup from '../popUps/popup';
+import HistoryPopup from '../popUps/historyPopup';
 
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const {
@@ -15,8 +16,8 @@ const {
 } = require('@fortawesome/free-solid-svg-icons');
 
 const Header = (props) => {
-
   const [popupState, popupSet] = useState(0);
+  const [history, setHistory] = useState(false);
   function togglePopUpHandler(destination) {
     //toggle false and 'login'
     console.log('popup ', destination);
@@ -25,14 +26,22 @@ const Header = (props) => {
       return destination;
     });
   }
+
+  function togglePopUpHandlerHistory() {
+    setHistory(() => {
+      if (history === true) return false;
+      return true;
+    });
+  }
+
   function popUpContent() {
-    return popupState ? 
-      <Popup 
-        display={popupState} 
-        loggedIn={props.loggedIn} 
+    return popupState ? (
+      <Popup
+        display={popupState}
+        loggedIn={props.loggedIn}
         displayLoginForm={props.displayLoginForm}
-      /> 
-      : null;
+      />
+    ) : null;
   }
   return (
     <div className='header'>
@@ -66,7 +75,7 @@ const Header = (props) => {
 
             <div
               className='social-Button'
-              onClick={() => togglePopUpHandler('social')}
+              onClick={() => togglePopUpHandlerHistory()}
             >
               <FontAwesomeIcon icon={faAt} size='2x' />
             </div>
@@ -87,6 +96,7 @@ const Header = (props) => {
           </div>
           {/* Drop Down Menu */}
           {popUpContent()}
+          {history && <HistoryPopup />}
         </div>
       </div>
     </div>
