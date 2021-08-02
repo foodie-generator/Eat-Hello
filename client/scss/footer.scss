@@ -1,0 +1,28 @@
+.footerBar{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: lighten($Primary,15%);
+}
+.designDetails{
+  width: 275px;
+}
+
+.footerBar p,
+.footerBar li{
+  font-size: $font-small;
+  color: desaturate(lighten($font-color,40%),50%);
+}
+
+
+.detailsFlex{
+  display: flex;
+  justify-content: space-around;
+  width: 50vw;
+}
+.footerFlex{
+  display: flex;
+  justify-content: space-around;
+  padding: 1rem;
+}
