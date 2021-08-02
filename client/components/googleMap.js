@@ -4,26 +4,39 @@ import { render } from 'react-dom';
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faUtensils } = require('@fortawesome/free-solid-svg-icons');
 import forkSvg from '../Images/utensils-solid.svg';
-let geocoder = require('geocoder');
+// let geocoder = require('geocoder');
+import axios from 'axios';
+import GoogleService from '../service/googleService.js';
 /* Options for how the map should initially render. */
 
 const GoogleMap = ({ menu, zipcode }) => {
   // geocoder.geocode(11220), (err,data) =>{
   //   console.log(data)
-  // })
+  // }
+
+  useEffect(async () => {
+    const result = await GoogleService.getGoogleMap(
+      'http://localhost:3000/annie'
+    );
+    console.log('this is results from googleMapAxios', result);
+  }, []);
+
+
+
   console.log('this is menu', menu);
   console.log('this is zipcode', zipcode)
-  fetch('/annie',{
-    //fetch to endpoint
-    method: 'GET',
-    headers:{
-      'Content-Type': 'application/json; charset=UTF-8'
-    }
-    ///body: JSON.stringify('https://maps.googleapis.com/maps/api/place/textsearch/json?query=chinese&key=AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw')
-  })
+  // axios('/annie',{
+  //   //fetch to endpoint
+  //   method: 'GET',
+  //   headers:{
+  //     'Content-Type': 'application/json; charset=UTF-8'
+  //   }
+  //   ///body: JSON.stringify('https://maps.googleapis.com/maps/api/place/textsearch/json?query=chinese&key=AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw')
+  // })
   // .then(response => response.json())
   // .then((data) => console.log(data));
   console.log('hello is this working')
+
   const loader = new Loader({
     apiKey: 'AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw',
     libraries: ['places'],
