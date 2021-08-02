@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react';
 import GoogleMapArea from '../components/googleMapArea';
+import GoogleService from '../service/googleService';
 
 const ZipCode = ({ menu, setZipcode, zipcode }) => {
   const [click, setClick] = useState(false);
@@ -15,10 +16,26 @@ const ZipCode = ({ menu, setZipcode, zipcode }) => {
       setClick(true);
       input.value = '';
       input.focus();
+      postZipcode();
     } else {
       alert('The Zipcode should be 5 digits NUMBER!');
     }
   };
+
+
+  // useEffect(async () => {
+  //   const result = await GoogleService.getGoogleMap(
+  //     'http://localhost:3000/annie'
+  //   );
+  //   console.log('this is results from googleMapAxios', result);
+  // }, []);
+  const postZipcode = async() => {
+    const result = await GoogleService.postGoogleZipcode(
+      'http://localhost:3000/map',
+      {zipCode: zipcode}
+    )
+  }
+
 
   return (
     <div className='zipcode_container'>
