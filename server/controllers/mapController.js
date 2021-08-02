@@ -45,7 +45,9 @@ mapController.sendRestaurant = async (res, req, next) => {
     res.locals = { restaurants: response.data.results };
     return next();
     // console.log('here here here', res.locals.restaurants);
-  } catch (err) {}
+  } catch (err) {
+    console.log('map controller err in Send Restraunt',err);
+  }
 };
 
 module.exports = mapController;
