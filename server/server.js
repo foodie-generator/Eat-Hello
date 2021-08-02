@@ -6,10 +6,11 @@ const PORT = 3000;
 //const userController = require('./controllers/userController');
 //const cookieParser = require('cookie-parser');
 const cuisineRouter = require('./routes/cuisine');
-const mapRouter = require('./routes/map');
-const cors = require('cors')
 
-app.use(cors())
+const mapController = require('./controllers/mapController');
+
+const cors = require('cors');
+app.use(cors());
 // activate the cookieParser 
 //app.use(cookieParser());
 app.use(express.json());
