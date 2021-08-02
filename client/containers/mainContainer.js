@@ -19,9 +19,7 @@ const MainContainer = () => {
           setZipcode={setZipcode}
           zipcode={zipcode}
         />
-        <ContentContainer menu={menu} />
         <Footer />
-
       </div>
     </div>
   );
