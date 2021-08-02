@@ -8,6 +8,7 @@ const MainContainer = () => {
   const [loggedIn, setLoggedIn] = useState(false);
   const [menu, setMenu] = useState('');
   const [zipcode, setZipcode] = useState(0);
+  const [username, setusername] = useState('');
 
   const [displayLoginForm, toggleDisplayLoginForm] = useState(false);
   //sent menu url to the server
@@ -16,10 +17,12 @@ const MainContainer = () => {
   };
   return (
     <div className='main_container'>
-      <Header 
+      <Header
         loggedIn={loggedIn}
         displayLoginForm={displayLoginForm}
         loginDisplayToggler={loginDisplayToggler}
+        menu={menu}
+        username={username}
       />
       <div className='main'>
         <FoodGenerator menu={menu} />

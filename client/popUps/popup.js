@@ -11,21 +11,19 @@ const Popup = (props) => {
     if(props.loggedIn){
       return(
         <Fragment>
-          <h2>
-            Welcome Back
-          </h2>
+          <h2>Welcome Back</h2>
         </Fragment>
       );
-    }//else not logged in
+    } //else not logged in
 
-    if(props.displayLoginForm){
-      return(
+    if (displayLoginForm) {
+      return (
         <Fragment>
           <div className="credContainer">
             <h2>Credentials</h2>
-            <label className="input">
-              <input className="input__field" type="text" placeholder=" " />
-              <span className="input__label">User Name</span>
+            <label className='input'>
+              <input className='input__field' type='text' placeholder=' ' />
+              <span className='input__label'>User Name</span>
             </label>
             <label className="input">
               <input className="input__field" type="text" placeholder=" " />
@@ -37,7 +35,7 @@ const Popup = (props) => {
             </div>
           </div>
         </Fragment>
-      )
+      );
     }
 
     return(
@@ -52,28 +50,26 @@ const Popup = (props) => {
     );
   };
 
-  const catContent = ()=>{
-    return(
+  const catContent = () => {
+    return (
       <Fragment>
-        <img src={goblinShark} alt="goblin-shark" />
+        <img src={goblinShark} alt='goblin-shark' />
       </Fragment>
     );
   };
 
-  const content = ()=>{
+  const content = () => {
     //these could be done without strings to controll content state
-    if(props.display === 'signIn') return logInContent();
-    if(props.display === 'cat') return catContent();
+    if (display === 'signIn') return logInContent();
+    if (display === 'cat') return catContent();
     //else
-    return <h1 > {props.display} </h1>;
+    return <h1> {display} </h1>;
   };
   return (
-    <div className="popUp">
-      <div className="popUpBody">
-        {content()}
-      </div>
+    <div className='popUp'>
+      <div className='popUpBody'>{content()}</div>
     </div>
   );
-}
+};
 
 export default Popup;
