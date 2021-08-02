@@ -9,9 +9,14 @@ const MainContainer = () => {
   const [menu, setMenu] = useState('');
   const [zipcode, setZipcode] = useState(0);
 
+  const [displayLoginForm, toggleDisplayLoginForm] = useState(false);
+
   return (
     <div className='main_container'>
-      <Header loggedIn={loggedIn}/>
+      <Header 
+        loggedIn={loggedIn}
+        displayLoginForm={displayLoginForm}
+      />
       <div className='main'>
         <FoodGenerator menu={menu} />
         <FoodPicker

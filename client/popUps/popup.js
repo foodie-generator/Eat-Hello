@@ -16,6 +16,24 @@ const Popup = (props) => {
       );
     }//else not logged in
 
+    if(props.displayLoginForm){
+      return(
+        <Fragment>
+          <div className="card">
+            <h2>Credentials</h2>
+            <label className="input">
+              <input className="input__field" type="text" placeholder=" " />
+              <span className="input__label">User Name</span>
+            </label>
+            <div className="button-group">
+              <button>Send</button>
+              <button type="reset">Reset</button>
+            </div>
+          </div>
+        </Fragment>
+      )
+    }
+
     return(
       <div className='logInButtonContainer' >
         <button className='submit signUpButton' >

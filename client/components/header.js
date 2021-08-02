@@ -26,7 +26,13 @@ const Header = (props) => {
     });
   }
   function popUpContent() {
-    return popupState ? <Popup display={popupState} loggedIn={props.loggedIn} /> : null;
+    return popupState ? 
+      <Popup 
+        display={popupState} 
+        loggedIn={props.loggedIn} 
+        displayLoginForm={props.displayLoginForm}
+      /> 
+      : null;
   }
   return (
     <div className='header'>
