@@ -8,6 +8,7 @@ const PORT = 3000;
 const cuisineRouter = require('./routes/cuisine');
 const mapRouter = require('./routes/map');
 const mapController = require('./controllers/mapController');
+const restaurantRouter = require('./routes/restaurant');
 
 const cors = require('cors');
 app.use(cors());
@@ -16,8 +17,9 @@ app.use(cors());
 app.use(express.json());
 
 app.use('/map', mapRouter);
+app.use('/restaurant', restaurantRouter);
 
-// a start point for the routes
+// a start point for the route
 app.use('/api', cuisineRouter);
 
 if (process.env.NODE_ENV === 'production') {

@@ -10,17 +10,27 @@ class GoogleService {
   }
 
   static async postGoogleZipcode(url, zipcode) {
-    try{
-        let result = await axios.post(url, zipcode)
-        console.log('this is post request result', result)
-        //result.data is json foam
-        return result.data;
+    try {
+      let result = await axios.post(url, zipcode);
+      // console.log('this is zip service');
+      //result.data is json foam
+      return result.data;
+    } catch (err) {
+      console.log(err);
     }
-    catch(err){
-        console.log(err)
+  }
+
+  static async postRestaurant(url, menu) {
+    try {
+      let { result } = await axios.post(url, menu);
+      // .then((data) => console.log(data));
+      // console.log('this is post restaurant menu request', result);
+      //result.data is json foam
+      return result.data;
+    } catch (err) {
+      console.log(`service post err`, err);
     }
   }
 }
 
-
-  export default GoogleService;
+export default GoogleService;

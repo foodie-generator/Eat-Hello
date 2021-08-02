@@ -4,6 +4,8 @@ import GoogleService from '../service/googleService';
 
 const ZipCode = ({ menu, setZipcode, zipcode }) => {
   const [click, setClick] = useState(false);
+  const [lat, setLat] = useState(40.7128);
+  const [lng, setLng] = useState(-74.006);
 
   const SetZipCode = (num) => {
     setZipcode(num);
@@ -22,20 +24,20 @@ const ZipCode = ({ menu, setZipcode, zipcode }) => {
     }
   };
 
-
   // useEffect(async () => {
   //   const result = await GoogleService.getGoogleMap(
   //     'http://localhost:3000/annie'
   //   );
   //   console.log('this is results from googleMapAxios', result);
   // }, []);
-  const postZipcode = async() => {
+  const postZipcode = async () => {
     const result = await GoogleService.postGoogleZipcode(
       'http://localhost:3000/map',
-      {zipCode: zipcode}
-    )
-  }
-
+      { zipCode: zipcode }
+    );
+    setLat(result.latitude);
+    setLng(result.longitude);
+  };
 
   return (
     <div className='zipcode_container'>
@@ -60,6 +62,8 @@ const ZipCode = ({ menu, setZipcode, zipcode }) => {
             menu={menu}
             zipcode={zipcode}
             setClick={() => setClick(false)}
+            lat={lat}
+            lng={lng}
           />
         )}
 

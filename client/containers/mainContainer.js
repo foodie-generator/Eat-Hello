@@ -8,6 +8,8 @@ const MainContainer = () => {
   const [menu, setMenu] = useState('');
   const [zipcode, setZipcode] = useState(0);
 
+  //sent menu url to the server
+
   return (
     <div className='main_container'>
       <Header />
