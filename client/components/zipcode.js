@@ -32,7 +32,7 @@ const ZipCode = ({ menu, setZipcode, zipcode }) => {
   const postZipcode = async() => {
     const result = await GoogleService.postGoogleZipcode(
       'http://localhost:3000/map',
-      zipcode
+      {zipCode: zipcode}
     )
   }
 

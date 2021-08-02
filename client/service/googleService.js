@@ -13,6 +13,7 @@ class GoogleService {
     try{
         let result = await axios.post(url, zipcode)
         console.log('this is post request result', result)
+        //result.data is json foam
         return result.data;
     }
     catch(err){
