@@ -9,6 +9,7 @@ import forkSvg from '../Images/utensils-solid.svg';
 
 const GoogleMap = ({ menu, zipcode }) => {
   console.log('this is menu', menu);
+  console.log('this is zipcode', zipcode)
   fetch(
     'https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+toronto+canada&key=AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw'
   )
@@ -20,8 +21,8 @@ const GoogleMap = ({ menu, zipcode }) => {
     // },
     // body: JSON.stringify('https://maps.googleapis.com/maps/api/place/textsearch/json?query=chinese&key=AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw')
     // .then(response => response.json())
-    .then((data) => console.log(data));
-
+  .then((data) => console.log(data));
+  console.log('hello is this working')
   const loader = new Loader({
     apiKey: 'AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw',
     libraries: ['places'],
