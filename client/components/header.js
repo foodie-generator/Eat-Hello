@@ -31,6 +31,7 @@ const Header = (props) => {
         display={popupState} 
         loggedIn={props.loggedIn} 
         displayLoginForm={props.displayLoginForm}
+        loginDisplayToggler={props.loginDisplayToggler}
       /> 
       : null;
   }

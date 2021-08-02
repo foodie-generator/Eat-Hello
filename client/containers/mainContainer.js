@@ -11,12 +11,15 @@ const MainContainer = () => {
 
   const [displayLoginForm, toggleDisplayLoginForm] = useState(false);
   //sent menu url to the server
-
+  const loginDisplayToggler = ()=>{
+    toggleDisplayLoginForm(()=>!displayLoginForm);
+  };
   return (
     <div className='main_container'>
       <Header 
         loggedIn={loggedIn}
         displayLoginForm={displayLoginForm}
+        loginDisplayToggler={loginDisplayToggler}
       />
       <div className='main'>
         <FoodGenerator menu={menu} />

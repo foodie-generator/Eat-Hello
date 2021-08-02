@@ -33,6 +33,7 @@
   z-index: 2;
 }
 .popUp{
+  
   background-color: desaturate($Secondary,28%);
   border-left: 2px solid $Primary;
   border-bottom: 2px solid $Primary;
@@ -46,20 +47,32 @@
   
 }
 
+.popUp{
+  position: fixed;
+  
+  //transform: translateX(100%);
+  transition: .3s ease-out;
+}
+
 .popUpBody{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
-  
+  overflow-wrap: initial;
 }
+
 .popUpBody img{
   width: 80%;
 }
 
-//submit buttons 
 
+
+//submit buttons 
+.credContainer{
+  display:flex;
+  flex-direction: column;
+}
 
 
 .logInButtonContainer {

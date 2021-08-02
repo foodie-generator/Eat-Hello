@@ -4,6 +4,8 @@ import goblinShark from '../Images/goboshark.png';
 
 const Popup = (props) => {
 
+  
+
   const logInContent = ()=>{
     //is user logged in 
     if(props.loggedIn){
@@ -19,15 +21,19 @@ const Popup = (props) => {
     if(props.displayLoginForm){
       return(
         <Fragment>
-          <div className="card">
+          <div className="credContainer">
             <h2>Credentials</h2>
             <label className="input">
               <input className="input__field" type="text" placeholder=" " />
               <span className="input__label">User Name</span>
             </label>
+            <label className="input">
+              <input className="input__field" type="text" placeholder=" " />
+              <span className="input__label">Password</span>
+            </label>
             <div className="button-group">
-              <button>Send</button>
-              <button type="reset">Reset</button>
+              <button className='submit'>Send</button>
+              <button type="reset" className='submit'>Reset</button>
             </div>
           </div>
         </Fragment>
@@ -36,7 +42,7 @@ const Popup = (props) => {
 
     return(
       <div className='logInButtonContainer' >
-        <button className='submit signUpButton' >
+        <button className='submit signUpButton' onClick={()=>props.loginDisplayToggler()}>
           Sign up
         </button>
         <button className='submit logInButton' >
