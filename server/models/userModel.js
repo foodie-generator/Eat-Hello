@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-// const SALT_WORK_FACTOR = 10;
-// const bcrypt = require('bcryptjs');
+const SALT_WORK_FACTOR = 10;
+const bcrypt = require('bcryptjs');
 
 const MONGO_URI = 'mongodb+srv://eathello:eathello123@cluster0.njyj1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 
@@ -34,13 +34,11 @@ const userSchema = new Schema({
 });
 
 // this is to hash the password before saving into data
-// userSchema.pre('save', (next) => {
-//   const salt = bcrypt.genSaltSync(SALT_WORK_FACTOR);
-//   const hash = bcrypt.hashSync(this.password, salt);
-//   this.password = hash;
-//   return next();
-// });
+userSchema.pre('save', function(next){
+  const salt = bcrypt.genSaltSync(SALT_WORK_FACTOR);
+  const hash = bcrypt.hashSync(this.password, salt);
+  this.password = hash;
+  return next();
+});
 
-const User = mongoose.model('user', userSchema);
-
-module.exports = User;
+module.exports = mongoose.model('User', userSchema);

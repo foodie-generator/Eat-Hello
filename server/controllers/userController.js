@@ -2,31 +2,7 @@ const bcrypt = require('bcryptjs');
 const User = require('../models/userModel');
 
 const userController = {};
-/**
-* createUser - create and save a new User into the database.
-*/
-// userController.createUser = async (req, res, next) => {
-//   try {
-//     await User.create({ username, password }, (err, user) => {
-//       //if err do something
-//       if(err){
-//         res.render('../api/signup', {error: err});
-//       }
-//       else {
-//         console.log(user);
-//         res.locals.id = user._id;
-//         return next();
-//       }
-//     });
-//     // const userID = result._doc_doc._id.id
-//     // res.locals.said = userID;
-//     // console.log(result);
-//     // return next();
-//   } catch (err) {
-//     console.log('error in userController.verifyUser');
-//     return next(err);
-//   }
-// };
+
 
 userController.readParams = (req, res, next) => {
   const {
@@ -64,12 +40,10 @@ userController.addDataBaseEntry = async (req, res, next) => {
 */
 userController.verifyUser = async (req, res, next) => {
   try {
-    const { username, password } = req.query;
-    const userQuery = {
-      username,
-    };
+    const username = res.locals.username;
+    const password = res.locals.password;
     // look in our database and find an entry with user's username
-    const result = await User.findOne(userQuery, (err, username) => {
+    const result = await User.findOne({ username }, (err, username) => {
       if (!username || err) {
         console.log('user not found');
         res.redirect('/api/signup');
@@ -77,11 +51,10 @@ userController.verifyUser = async (req, res, next) => {
     });
     console.log(result);
     // if we find it, compare user's password with database's password
-    //const passwordCompare = await bcrypt.compare(password, result.password);
+    const passwordCompare = await bcrypt.compare(password, result.password);
     // get mongo id from result body and set on res locals for cookies
     // to compare the user's input(hased) to verify - if true return next
-    //if (passwordCompare) return next();
-    if (result.password === password) return next();
+    if (passwordCompare) return next();
     return next({
       err: console.log('passwords do not match'),
     });
@@ -90,6 +63,28 @@ userController.verifyUser = async (req, res, next) => {
     return next(err);
   }
 };
+
+userController.getUser = async (req,res,next) =>{
+  const username = res.locals.username;
+  const result = await User.findOne({ username }, (err, username) => {
+    if (!username || err) {
+      console.log('user not found');
+      res.redirect('/api/signup');  
+    }
+  });
+  console.log('end of getUser, also result Password', result.password);
+  res.locals.dbPassword = result.password;
+  return next();
+};
+
+userController.passwordCompare = async (req,res,next) =>{
+  const { password, dbPassword } = res.locals;
+  const passwordCompare = await bcrypt.compare(password, dbPassword);
+
+  res.locals.pwResult = passwordCompare;
+  return next();
+};
+
 /**
  * to access the user's data after the user logs in and in order to acess the user's location,
  * prefer cousine and food/ answer the user got from the past

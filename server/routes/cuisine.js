@@ -10,8 +10,14 @@ router.get('/health-check', (req, res) => {
 /**
  * login
  */
-router.post('/login', userController.verifyUser, (req, res) => {
-  res.status(200).send();
+router.post('/login', [userController.readParams,userController.getUser,userController.passwordCompare], (req, res) => {
+  if(res.locals.pwResult){
+    res.status(200).send(true);
+    //RETURN SOMETHING ELSE, to help with future (like thier ID)
+
+  }else{
+    res.status(200).send(false);
+  }
 });
 
 /**
