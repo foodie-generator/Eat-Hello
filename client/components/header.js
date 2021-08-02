@@ -15,7 +15,7 @@ const {
   faDice,
 } = require('@fortawesome/free-solid-svg-icons');
 
-const Header = (props) => {
+const Header = ({ loggedIn, displayLoginForm, menu, username }) => {
   const [popupState, popupSet] = useState(0);
   const [history, setHistory] = useState(false);
   function togglePopUpHandler(destination) {
@@ -96,7 +96,7 @@ const Header = (props) => {
           </div>
           {/* Drop Down Menu */}
           {popUpContent()}
-          {history && <HistoryPopup />}
+          {history && <HistoryPopup menu={menu} username={username} />}
         </div>
       </div>
     </div>
