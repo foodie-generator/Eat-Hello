@@ -16,11 +16,10 @@ const GoogleMap = ({ menu, zipcode }) => {
 
   useEffect(async () => {
     const result = await GoogleService.getGoogleMap(
-      'http://localhost:3000/annie'
+      'http://localhost:3000/map'
     );
     console.log('this is results from googleMapAxios', result);
   }, []);
-
 
 
   console.log('this is menu', menu);
