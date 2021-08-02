@@ -7,24 +7,27 @@ const userController = {};
 */
 userController.createUser = async (req, res, next) => {
   try {
+    console.log('req.query: ', req.query);
     const {
-      firstName, lastName, location, preferCuisine, username, password,
-    } = req.params;
-    console.log(req.params);
-    const newUser = {
-      firstName,
-      lastName,
-      location,
-      preferCuisine,
-      username,
-      password,
-    };
-    const result = await User.create(newUser);
+      username, password,
+    } = req.query;
+    await User.create({ username, password }, (err, user) => {
+      //if err do something
+      if(err){
+        res.render('../client/signup', {error: err});
+      }
+      else {
+        console.log(user);
+        res.locals.id = user._id;
+        return next();
+      }
+    });
     // const userID = result._doc_doc._id.id
     // res.locals.said = userID;
-    console.log(result);
-    return next();
+    // console.log(result);
+    // return next();
   } catch (err) {
+    console.log('error in userController.verifyUser');
     return next(err);
   }
 };
@@ -42,18 +45,24 @@ userController.verifyUser = async (req, res, next) => {
       username,
     };
     // look in our database and find an entry with user's username
-    const result = await User.findOne(userQuery);
+    const result = await User.findOne(userQuery, (err, username) => {
+      if (!username || err) {
+        console.log('user not found');
+        res.redirect('/api/signup');
+      }
+    });
     console.log(result);
     // if we find it, compare user's password with database's password
-    const passwordCompare = await bcrypt.compare(password, result.password);
+    //const passwordCompare = await bcrypt.compare(password, result.password);
     // get mongo id from result body and set on res locals for cookies
     // to compare the user's input(hased) to verify - if true return next
-    if (passwordCompare) return next();
+    //if (passwordCompare) return next();
+    if (result.password === password) return next();
     return next({
       err: console.log('passwords do not match'),
     });
   } catch (err) {
-    return (console.log('userController.verifyUser error'));
+    return (console.log('error in userController.verifyUser'));
   }
 };
 /**

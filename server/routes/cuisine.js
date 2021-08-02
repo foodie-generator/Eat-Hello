@@ -11,19 +11,13 @@ router.get('/health-check', (req, res) => {
  * login
  */
 router.post('/login', userController.verifyUser, (req, res) => {
-  // what should happen here on successful log in?
   res.status(200).send;
 });
 
 /**
- * Authorized routes
+ * signup
  */
 router.post('/signup', userController.createUser, (req, res) => {
-  // /**
-  // * The previous middleware has populated `res.locals` with users
-  // * which we will pass this in to the res.render so it can generate
-  // * the proper html from the `secret.ejs` template
-  // */
   res.status(200).send;
 });
 

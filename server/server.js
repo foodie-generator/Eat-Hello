@@ -23,7 +23,7 @@ app.get('/annie', mapController.testing, (req, res) => {
 });
 
 // a start point for the routes
-//app.use('/api', cuisineRouter);
+app.use('/api', cuisineRouter);
 
 if (process.env.NODE_ENV === 'production') {
   app.use('/build', express.static(path.join(__dirname, '../build')));
