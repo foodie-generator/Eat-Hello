@@ -30,8 +30,9 @@ const userSchema = new Schema({
   preferCuisine: String,
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  // answerGenerated: {type: String}
+  history: [String],
 });
+
 
 // this is to hash the password before saving into data
 userSchema.pre('save', function(next){
