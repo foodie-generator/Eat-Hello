@@ -5,64 +5,29 @@ const userController = {};
 
 
 userController.readParams = (req, res, next) => {
-  const {
-    username, password,
-  } = req.query;
+  const { username, password } = req.query;
   res.locals = { username, password };
-  console.log('locals in readParams are un,pw', res.locals.username , res.locals.password);
+  //console.log('locals in readParams are un,pw', res.locals.username , res.locals.password);
   return next();
 };
 
 userController.addDataBaseEntry = async (req, res, next) => {
   //grab un and pw from locals 
-  const username = res.locals.username;
-  const password = res.locals.password;
-  let result;
-
+  const { username, password } = res.locals;
   await User.create({ username, password }, (err, user) => {
     //if err do something
     if(err){
       res.render('/', {error: err});
     }
     else {
-      console.log('user: ', user);
+      //console.log('user: ', user);
+      // MongoDB ID
       res.locals.id = user._id;
       return next();
     }
   });
 };
 /** ssid? */
-
-/**
-* verifyUser - Obtain username and password from the request body, locate
-* the appropriate user in the database, and then authenticate the submitted password
-* against the password stored in the database.
-*/
-userController.verifyUser = async (req, res, next) => {
-  try {
-    const username = res.locals.username;
-    const password = res.locals.password;
-    // look in our database and find an entry with user's username
-    const result = await User.findOne({ username }, (err, username) => {
-      if (!username || err) {
-        console.log('user not found');
-        res.redirect('/api/signup');
-      }
-    });
-    console.log(result);
-    // if we find it, compare user's password with database's password
-    const passwordCompare = await bcrypt.compare(password, result.password);
-    // get mongo id from result body and set on res locals for cookies
-    // to compare the user's input(hased) to verify - if true return next
-    if (passwordCompare) return next();
-    return next({
-      err: console.log('passwords do not match'),
-    });
-  } catch (err) {
-    console.log('error in userController.verifyUser');
-    return next(err);
-  }
-};
 
 userController.getUser = async (req,res,next) =>{
   const username = res.locals.username;
@@ -72,18 +37,35 @@ userController.getUser = async (req,res,next) =>{
       res.redirect('/api/signup');  
     }
   });
-  console.log('end of getUser, also result Password', result.password);
+  console.log('result', result);
   res.locals.dbPassword = result.password;
+  res.locals.history = result.history;
   return next();
+};
+
+userController.updatePizzaHistory = async (req, res, next) => {
+  const pizza = 'Pizza';
+  const { username } = res.locals;
+  await User.findOneAndUpdate({ username }, { $push: { history : pizza }}, (err, data) => {
+    if (err) {
+      console.log('err: ', err);
+      return next(err);
+    }
+    else {
+      return next();
+    }
+  });
 };
 
 userController.passwordCompare = async (req,res,next) =>{
+  //res.locals.password = req.query.password
   const { password, dbPassword } = res.locals;
   const passwordCompare = await bcrypt.compare(password, dbPassword);
-
   res.locals.pwResult = passwordCompare;
   return next();
 };
+
+
 
 /**
  * to access the user's data after the user logs in and in order to acess the user's location,

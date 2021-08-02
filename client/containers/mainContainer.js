@@ -10,6 +10,7 @@ const MainContainer = () => {
   const [zipcode, setZipcode] = useState(0);
 
   const [displayLoginForm, toggleDisplayLoginForm] = useState(false);
+  //sent menu url to the server
 
   return (
     <div className='main_container'>

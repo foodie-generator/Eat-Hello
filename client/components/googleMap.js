@@ -1,4 +1,4 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component, useEffect, useState } from 'react';
 import { Loader } from '@googlemaps/js-api-loader';
 import { render } from 'react-dom';
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
@@ -6,35 +6,20 @@ const { faUtensils } = require('@fortawesome/free-solid-svg-icons');
 import forkSvg from '../Images/utensils-solid.svg';
 // let geocoder = require('geocoder');
 import axios from 'axios';
-import GoogleService from '../service/googleService.js';
+import GoogleService from '../service/googleService';
 /* Options for how the map should initially render. */
 
-const GoogleMap = ({ menu, zipcode }) => {
-  // geocoder.geocode(11220), (err,data) =>{
-  //   console.log(data)
-  // }
-
+const GoogleMap = ({ menu, zipcode, lat, lng }) => {
   useEffect(async () => {
-    const result = await GoogleService.getGoogleMap(
-      'http://localhost:3000/map'
+    const result = await GoogleService.postRestaurant(
+      'http://localhost:3000/restaurant',
+      { menu: menu, lat: lat, lng: lng }
     );
-    console.log('this is results from googleMapAxios', result);
-  }, []);
-
-
-  console.log('this is menu', menu);
-  console.log('this is zipcode', zipcode)
-  // axios('/annie',{
-  //   //fetch to endpoint
-  //   method: 'GET',
-  //   headers:{
-  //     'Content-Type': 'application/json; charset=UTF-8'
-  //   }
-  //   ///body: JSON.stringify('https://maps.googleapis.com/maps/api/place/textsearch/json?query=chinese&key=AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw')
-  // })
-  // .then(response => response.json())
-  // .then((data) => console.log(data));
-  console.log('hello is this working')
+    console.log('this is results', result);
+    console.log('this is results from restaurant array', result.restaurants);
+  }, [lat]);
+  // https://maps.googleapis.com/maps/api/place/textsearch/json?query=chinese&key=AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw
+  // https://maps.googleapis.com/maps/api/place/textsearch/json?query=123+main+street&location=42.3675294,-71.186966&radius=10000&key=AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw
 
   const loader = new Loader({
     apiKey: 'AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw',
@@ -43,10 +28,10 @@ const GoogleMap = ({ menu, zipcode }) => {
 
   const mapOptions = {
     center: {
-      lat: 40.7128,
-      lng: -74.006,
+      lat,
+      lng,
     },
-    zoom: 11,
+    zoom: 16,
   };
 
   // // Callback
@@ -57,7 +42,6 @@ const GoogleMap = ({ menu, zipcode }) => {
         document.getElementById('map'),
         mapOptions
       );
-      console.log('we made it here');
 
       let marker = new google.maps.Marker({
         position: {
@@ -71,8 +55,6 @@ const GoogleMap = ({ menu, zipcode }) => {
     .catch((e) => {
       console.log('THIS DONT WORKKK', e);
     });
-  console.log('pre loaderCallback');
-
   return (
     <div className='google_map'>
       <div id='map'>hi</div>
