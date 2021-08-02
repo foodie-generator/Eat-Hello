@@ -18,10 +18,10 @@ const Popup = (props) => {
 
     return(
       <div className='logInButtonContainer' >
-        <button>
+        <button className='submit signUpButton' >
           Sign up
         </button>
-        <button>
+        <button className='submit logInButton' >
           Log In
         </button>
       </div>
