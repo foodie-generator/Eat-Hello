@@ -2,6 +2,7 @@ import React, { Component, useEffect } from 'react';
 import GoogleMap from './googleMap';
 import { Wrapper, Status } from '@googlemaps/react-wrapper';
 
+
 const GoogleMapArea = ({ menu, zipcode, setClick }) => {
   return (
     <div className='google'>
