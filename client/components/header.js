@@ -15,7 +15,13 @@ const {
   faDice,
 } = require('@fortawesome/free-solid-svg-icons');
 
-const Header = ({ loggedIn, displayLoginForm, menu, username }) => {
+const Header = ({
+  loggedIn,
+  displayLoginForm,
+  menu,
+  username,
+  loginDisplayToggler,
+}) => {
   const [popupState, popupSet] = useState(0);
   const [history, setHistory] = useState(false);
   function togglePopUpHandler(destination) {
@@ -35,14 +41,14 @@ const Header = ({ loggedIn, displayLoginForm, menu, username }) => {
   }
 
   function popUpContent() {
-    return popupState ? 
-      <Popup 
-        display={popupState} 
-        loggedIn={props.loggedIn} 
-        displayLoginForm={props.displayLoginForm}
-        loginDisplayToggler={props.loginDisplayToggler}
-      /> 
-      : null;
+    return popupState ? (
+      <Popup
+        popupState={popupState}
+        loggedIn={loggedIn}
+        displayLoginForm={displayLoginForm}
+        loginDisplayToggler={loginDisplayToggler}
+      />
+    ) : null;
   }
   return (
     <div className='header'>
