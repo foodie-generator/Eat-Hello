@@ -42,15 +42,18 @@ userController.addDataBaseEntry = async (req, res, next) => {
   const username = res.locals.username;
   const password = res.locals.password;
   let result;
-  try {
-    result = await User.create({ username, password });
-    console.log('the results from the user create are:',result);
-    return next();
-    //did next ts
-  } catch (err) {
-    console.log('error in userController.addDataBaseEntry',err);
-    return next(err);
-  }
+
+  await User.create({ username, password }, (err, user) => {
+    //if err do something
+    if(err){
+      res.render('/', {error: err});
+    }
+    else {
+      console.log('user: ', user);
+      res.locals.id = user._id;
+      return next();
+    }
+  });
 };
 /** ssid? */
 
@@ -61,7 +64,7 @@ userController.addDataBaseEntry = async (req, res, next) => {
 */
 userController.verifyUser = async (req, res, next) => {
   try {
-    const { username, password } = req.params;
+    const { username, password } = req.query;
     const userQuery = {
       username,
     };
