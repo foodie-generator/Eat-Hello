@@ -21,8 +21,9 @@ class GoogleService {
   }
 
   static async postRestaurant(url, menu) {
+    let result;
     try {
-      let { result } = await axios.post(url, menu);
+      result = await axios.post(url, menu);
       // .then((data) => console.log(data));
       // console.log('this is post restaurant menu request', result);
       //result.data is json foam
