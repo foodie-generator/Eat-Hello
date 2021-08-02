@@ -33,7 +33,11 @@
   z-index: 2;
 }
 .popUp{
-  background-color: darken($Primary,25%);
+  background-color: desaturate($Secondary,28%);
+  border-left: 2px solid $Primary;
+  border-bottom: 2px solid $Primary;
+  border-right: 2px solid $Primary;
+  border-bottom-left-radius: 0.25rem;
   position: absolute;
   height: 400px;
   width: 250px;
@@ -45,6 +49,11 @@
 .popUpBody{
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
   
+}
+.popUpBody img{
+  width: 80%;
 }
