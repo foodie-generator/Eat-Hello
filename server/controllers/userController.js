@@ -5,7 +5,7 @@ const userController = {};
 
 
 userController.readParams = (req, res, next) => {
-  const { username, password } = req.query;
+  const { username, password } = req.body;
   res.locals = { username, password };
   //console.log('locals in readParams are un,pw', res.locals.username , res.locals.password);
   return next();
@@ -39,6 +39,18 @@ userController.getUser = async (req,res,next) =>{
   });
   console.log('result', result);
   res.locals.dbPassword = result.password;
+  return next();
+};
+
+userController.getFoodHistory = async (req,res,next) =>{
+  const { username } = req.body;
+  const result = await User.findOne({ username }, (err, username) => {
+    if (!username || err) {
+      console.log('user not found');
+      res.redirect('/api/signup');  
+    }
+  });
+  console.log('result', result);
   res.locals.history = result.history;
   return next();
 };
