@@ -8,6 +8,17 @@ class GoogleService {
       console.log(err);
     }
   }
+
+  static async postGoogleZipcode(url, zipcode) {
+    try{
+        let result = await axios.post(url, zipcode)
+        console.log('this is post request result', result)
+        return result.data;
+    }
+    catch(err){
+        console.log(err)
+    }
+  }
 }
 
 
