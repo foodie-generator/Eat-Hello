@@ -38,8 +38,8 @@ const Header = ({ loggedIn, displayLoginForm, menu, username }) => {
     return popupState ? (
       <Popup
         display={popupState}
-        loggedIn={props.loggedIn}
-        displayLoginForm={props.displayLoginForm}
+        loggedIn={loggedIn}
+        displayLoginForm={displayLoginForm}
       />
     ) : null;
   }
