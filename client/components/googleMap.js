@@ -4,24 +4,25 @@ import { render } from 'react-dom';
 const { FontAwesomeIcon } = require('@fortawesome/react-fontawesome');
 const { faUtensils } = require('@fortawesome/free-solid-svg-icons');
 import forkSvg from '../Images/utensils-solid.svg';
-
+let geocoder = require('geocoder');
 /* Options for how the map should initially render. */
 
 const GoogleMap = ({ menu, zipcode }) => {
+  // geocoder.geocode(11220), (err,data) =>{
+  //   console.log(data)
+  // })
   console.log('this is menu', menu);
   console.log('this is zipcode', zipcode)
-  fetch(
-    'https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+toronto+canada&key=AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw'
-  )
+  fetch('/annie',{
     //fetch to endpoint
-
-    // method: 'GET',
-    // headers:{
-    //   'Content-Type': 'application/json; charset=UTF-8'
-    // },
-    // body: JSON.stringify('https://maps.googleapis.com/maps/api/place/textsearch/json?query=chinese&key=AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw')
-    // .then(response => response.json())
-  .then((data) => console.log(data));
+    method: 'GET',
+    headers:{
+      'Content-Type': 'application/json; charset=UTF-8'
+    }
+    ///body: JSON.stringify('https://maps.googleapis.com/maps/api/place/textsearch/json?query=chinese&key=AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw')
+  })
+  // .then(response => response.json())
+  // .then((data) => console.log(data));
   console.log('hello is this working')
   const loader = new Loader({
     apiKey: 'AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw',
@@ -61,7 +62,7 @@ const GoogleMap = ({ menu, zipcode }) => {
   console.log('pre loaderCallback');
 
   return (
-    <div calssName='google_map'>
+    <div className='google_map'>
       <div id='map'>hi</div>
     </div>
   );
