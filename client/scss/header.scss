@@ -1,4 +1,50 @@
+.header div{
+  z-index: 5;
+}
+
 .header {
+  //display: flex;
+  //justify-content: space-around;
+  padding: 1.5rem 1.5rem;
+  background-color: darken($Primary,10%);
+
+}
+.headName{
+  margin-left: 2rem;
+}
+.headerBar{
+  display:flex;
+  justify-content: space-between;
+}
+.headerBar div{
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+}
+
+.headerBar-Right svg{
+  margin-left: 1.25rem;
+}
+.headerBar-Left svg{
+  margin-left: 1.25rem;
+}
+
+// POP up styling
+.popUp div{
+  z-index: 2;
+}
+.popUp{
+  background-color: darken($Primary,25%);
+  position: absolute;
+  height: 400px;
+  width: 250px;
+  margin-top: 45px;
+  top: 50px;
+  
+}
+
+.popUpBody{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  
 }

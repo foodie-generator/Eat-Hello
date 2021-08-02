@@ -1,7 +1,94 @@
 .food_option_box {
+  position: absolute;
+  right: 0;
+  top: 100px;
+  display: flex;
+  align-items: center;
+  width: 460px;
+  height: 680px;
+  padding: 50px;
+  background-color: lighten($Primary, 20%);
+  border-radius: 10px;
+}
+
+.food_option_lists {
   display: flex;
   flex-direction: column;
-  width: 400px;
-  height: 700px;
-  background-color: antiquewhite;
+  height: 520px;
+  width: 240px;
+  padding: 10px 20px 10px 25px;
+  font-size: $font-large;
+  overflow-y: auto;
+}
+
+.food_input_btns {
+  display: flex;
+  flex-direction: column;
+  height: 400px;
+}
+
+.food_option {
+  margin: 10px 0;
+}
+
+.add_menu {
+  width: 185px;
+  height: 30px;
+  outline: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 2px solid darken($Primary, 10%);
+  font-size: $font-medium;
+}
+
+.add_menuBtn {
+  margin: 20px 0 10px;
+  width: 185px;
+  height: 35px;
+  border-radius: 10px;
+  background-color: lighten($Primary, 8%);
+  font-size: $font-large;
+}
+
+.add_menuBtn:hover {
+  background-color: darken($Primary, 10%);
+}
+
+.add_menuBtn:focus {
+  background-color: darken($Primary, 10%);
+}
+
+.show_menuBtn {
+  width: 185px;
+  height: 35px;
+  margin-top: 30px;
+  border-radius: 10px;
+  background-color: $Primary;
+  font-size: $font-large;
+}
+
+.show_menuBtn:focus {
+  background-color: darken($Primary, 8%);
+}
+
+.show_menuBtn:hover {
+  background-color: darken($Primary, 8%);
+}
+
+.cancel_menuBtn {
+  width: 185px;
+  height: 35px;
+  margin-top: 100px;
+  border-radius: 10px;
+  background-color: lighten($Primary, 19%);
+  border: 3px solid lighten($Primary, 5%);
+  font-size: $font-large;
+}
+
+.cancel_menuBtn:focus {
+  background-color: darken($Primary, 8%);
+}
+
+.cancel_menuBtn:hover {
+  background-color: darken($Primary, 8%);
 }

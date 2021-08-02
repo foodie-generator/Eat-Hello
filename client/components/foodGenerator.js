@@ -1,10 +1,10 @@
-import React, { Component, useEffect } from 'react';
+import React, { Component, useState } from 'react';
 
-const FoodGenerator = () => {
+const FoodGenerator = ({ menu }) => {
   return (
     <div className='food_generator'>
-      <div>what should we eat?</div>
-      <input type='text' placeholder='what is your food today?' />
+      <div id='generator_title'>what should we eat?</div>
+      <div id='generator_menu'> {menu} </div>
     </div>
   );
 };

@@ -7,6 +7,7 @@
 body {
   font-family: 'Roboto', sans-serif;
   color: $font-color;
+  background-color: lighten($Secondary, 14%);
 }
 
 button,
