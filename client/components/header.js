@@ -35,13 +35,14 @@ const Header = ({ loggedIn, displayLoginForm, menu, username }) => {
   }
 
   function popUpContent() {
-    return popupState ? (
-      <Popup
-        display={popupState}
-        loggedIn={loggedIn}
-        displayLoginForm={displayLoginForm}
-      />
-    ) : null;
+    return popupState ? 
+      <Popup 
+        display={popupState} 
+        loggedIn={props.loggedIn} 
+        displayLoginForm={props.displayLoginForm}
+        loginDisplayToggler={props.loginDisplayToggler}
+      /> 
+      : null;
   }
   return (
     <div className='header'>

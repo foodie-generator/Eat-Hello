@@ -2,11 +2,14 @@ import { PromiseProvider } from 'mongoose';
 import React, { Component, Fragment, useEffect } from 'react';
 import goblinShark from '../Images/goboshark.png';
 
-const Popup = ({ display, loggedIn, displayLoginForm }) => {
-  const logInContent = () => {
-    //is user logged in
-    if (loggedIn) {
-      return (
+const Popup = (props) => {
+
+  
+
+  const logInContent = ()=>{
+    //is user logged in 
+    if(props.loggedIn){
+      return(
         <Fragment>
           <h2>Welcome Back</h2>
         </Fragment>
@@ -16,25 +19,33 @@ const Popup = ({ display, loggedIn, displayLoginForm }) => {
     if (displayLoginForm) {
       return (
         <Fragment>
-          <div className='card'>
+          <div className="credContainer">
             <h2>Credentials</h2>
             <label className='input'>
               <input className='input__field' type='text' placeholder=' ' />
               <span className='input__label'>User Name</span>
             </label>
-            <div className='button-group'>
-              <button>Send</button>
-              <button type='reset'>Reset</button>
+            <label className="input">
+              <input className="input__field" type="text" placeholder=" " />
+              <span className="input__label">Password</span>
+            </label>
+            <div className="button-group">
+              <button className='submit'>Send</button>
+              <button type="reset" className='submit'>Reset</button>
             </div>
           </div>
         </Fragment>
       );
     }
 
-    return (
-      <div className='logInButtonContainer'>
-        <button className='submit signUpButton'>Sign up</button>
-        <button className='submit logInButton'>Log In</button>
+    return(
+      <div className='logInButtonContainer' >
+        <button className='submit signUpButton' onClick={()=>props.loginDisplayToggler()}>
+          Sign up
+        </button>
+        <button className='submit logInButton' >
+          Log In
+        </button>
       </div>
     );
   };

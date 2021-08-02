@@ -32,34 +32,37 @@ const Footer = () => {
           <div className='col1'>
             
             <ul>
-              <li><strong>one</strong></li>
-              <li>two</li>
-              <li>three</li>
-              <li>four</li>
+              <li><strong>CodeSmith</strong></li>
+              <li>New York</li>
+              <li>Immersive 27</li>
+              <li>Goblin Shark</li>
             </ul>
           </div>
           <div className='col2'>
             <ul>
-            <li><strong>one</strong></li>
-              <li>two</li>
-              <li>three</li>
-              <li>four</li>
+            <li><strong>Tech</strong></li>
+              <li>React</li>
+              <li>Express</li>
+              <li>MongoDB</li>
+              <li>Node</li>
             </ul>
           </div>
           <div className='col3'>
             <ul>
-            <li><strong>one</strong></li>
-              <li>two</li>
-              <li>three</li>
-              <li>four</li>
+            <li><strong>Resources</strong></li>
+              <li>Fort Awesome</li>
+              <li>Babel</li>
+              <li>axios</li>
+              <li>nodemon</li>
+              <li>cors</li>
+              <li>bcrypt</li>
+              <li>mongoose</li>
             </ul> 
           </div>
           <div className='col4'>
             <ul>
-            <li><strong>one</strong></li>
-              <li>two</li>
-              <li>three</li>
-              <li>four</li>
+            <li><strong>APIs</strong></li>
+              <li>Google Maps</li>
             </ul>
           </div>
         </div>
