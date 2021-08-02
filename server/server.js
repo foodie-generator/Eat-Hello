@@ -9,6 +9,8 @@ const googleUrl = 'https://maps.googleapis.com/maps/api/place/textsearch/json?qu
 const cuisineRouter = require('./routes/cuisine');
 const mapController = require('./controllers/mapController');
 
+const cors = require('cors')
+app.use(cors())
 // activate the cookieParser 
 //app.use(cookieParser());
 app.use(express.json());
