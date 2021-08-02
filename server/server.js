@@ -5,24 +5,17 @@ const PORT = 3000;
 //const mongoose = require('mongoose');
 //const userController = require('./controllers/userController');
 //const cookieParser = require('cookie-parser');
-const googleUrl = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=restaurants+toronto+canada&key=AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw';
 const cuisineRouter = require('./routes/cuisine');
+
 const mapController = require('./controllers/mapController');
 
-const cors = require('cors')
-app.use(cors())
+const cors = require('cors');
+app.use(cors());
 // activate the cookieParser 
 //app.use(cookieParser());
 app.use(express.json());
 
-app.get('/annie', mapController.testing, (req, res) => {
-  //console.log('req.locals.data: ', req.locals.data);
-  //console.log('payload is: ', res.locals.data.json());
-  return res.json({
-    status: true,
-    payload: req.locals.data
-  });
-});
+app.use('/map', mapRouter);
 
 // a start point for the routes
 app.use('/api', cuisineRouter);
