@@ -1,6 +1,5 @@
 import React, { Component, useEffect, useState } from 'react';
 import Header from '../components/header';
-import ContentContainer from './contentContatiner';
 import FoodGenerator from '../components/foodGenerator';
 import FoodPicker from '../components/foodpicker';
 import Footer from '../components/footer';
