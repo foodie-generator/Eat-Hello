@@ -43,15 +43,18 @@ userController.getUser = async (req,res,next) =>{
 };
 
 userController.getFoodHistory = async (req,res,next) =>{
-  const { username } = req.body;
+  console.log (req.query) ;
+  const { username } = req.query;
+  //console.log(username);
   const result = await User.findOne({ username }, (err, username) => {
     if (!username || err) {
-      console.log('user not found');
-      res.redirect('/api/signup');  
+      console.log('no user found, error: ', err);
+      return next(err);
     }
   });
-  console.log('result', result);
-  res.locals.history = result.history;
+  const history = result.history;
+  res.locals.history = history;
+  console.log('foodHistory finished: ', res.locals.history);
   return next();
 };
 

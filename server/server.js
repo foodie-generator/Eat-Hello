@@ -19,6 +19,7 @@ app.use(express.json());
 app.use('/map', mapRouter);
 app.use('/restaurant', restaurantRouter);
 
+
 // a start point for the route
 app.use('/api', cuisineRouter);
 
