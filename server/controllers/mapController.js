@@ -40,13 +40,13 @@ mapController.sendRestaurant = async (res, req, next) => {
     const lat = res.body.lat;
     const lng = res.body.lng;
     // console.log(`menu:`, menu, `lat:`, lat, `lng:`, lng);
-    const restaurantUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${menu}}&type=restaurant&location=${lat},${lng}&radius=10000&key=AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw`;
+    const restaurantUrl = `https://maps.googleapis.com/maps/api/place/textsearch/json?query=${menu}}&type=restaurant&location=${lat},${lng}&radius=2000&key=AIzaSyCaSo1pxwCY44jihxAMHhJjVJ3mHbFLsPw`;
     const response = await axios.get(restaurantUrl);
     res.locals = { restaurants: response.data.results };
     return next();
     // console.log('here here here', res.locals.restaurants);
   } catch (err) {
-    console.log('map controller err in Send Restraunt',err);
+    console.log('map controller err in Send Restraunt', err);
   }
 };
 
