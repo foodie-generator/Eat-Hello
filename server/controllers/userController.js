@@ -5,29 +5,50 @@ const userController = {};
 /**
 * createUser - create and save a new User into the database.
 */
-userController.createUser = async (req, res, next) => {
+// userController.createUser = async (req, res, next) => {
+//   try {
+//     await User.create({ username, password }, (err, user) => {
+//       //if err do something
+//       if(err){
+//         res.render('../api/signup', {error: err});
+//       }
+//       else {
+//         console.log(user);
+//         res.locals.id = user._id;
+//         return next();
+//       }
+//     });
+//     // const userID = result._doc_doc._id.id
+//     // res.locals.said = userID;
+//     // console.log(result);
+//     // return next();
+//   } catch (err) {
+//     console.log('error in userController.verifyUser');
+//     return next(err);
+//   }
+// };
+
+userController.readParams = (req, res, next) => {
+  const {
+    username, password,
+  } = req.query;
+  res.locals = { username, password };
+  console.log('locals in readParams are un,pw', res.locals.username , res.locals.password);
+  return next();
+};
+
+userController.addDataBaseEntry = async (req, res, next) => {
+  //grab un and pw from locals 
+  const username = res.locals.username;
+  const password = res.locals.password;
+  let result;
   try {
-    console.log('req.query: ', req.query);
-    const {
-      username, password,
-    } = req.query;
-    await User.create({ username, password }, (err, user) => {
-      //if err do something
-      if(err){
-        res.render('../client/signup', {error: err});
-      }
-      else {
-        console.log(user);
-        res.locals.id = user._id;
-        return next();
-      }
-    });
-    // const userID = result._doc_doc._id.id
-    // res.locals.said = userID;
-    // console.log(result);
-    // return next();
+    result = await User.create({ username, password });
+    console.log('the results from the user create are:',result);
+    return next();
+    //did next ts
   } catch (err) {
-    console.log('error in userController.verifyUser');
+    console.log('error in userController.addDataBaseEntry',err);
     return next(err);
   }
 };
@@ -62,7 +83,8 @@ userController.verifyUser = async (req, res, next) => {
       err: console.log('passwords do not match'),
     });
   } catch (err) {
-    return (console.log('error in userController.verifyUser'));
+    console.log('error in userController.verifyUser');
+    return next(err);
   }
 };
 /**

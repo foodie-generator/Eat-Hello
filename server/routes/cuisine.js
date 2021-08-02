@@ -11,14 +11,14 @@ router.get('/health-check', (req, res) => {
  * login
  */
 router.post('/login', userController.verifyUser, (req, res) => {
-  res.status(200).send;
+  res.status(200).send();
 });
 
 /**
  * signup
  */
-router.post('/signup', userController.createUser, (req, res) => {
-  res.status(200).send;
+router.post('/signup', [userController.readParams,userController.addDataBaseEntry], (req, res) => {
+  res.status(200).send();
 });
 
 // post request to /signup
