@@ -1,1 +1,1 @@
-Goblin Shark app v.1.0
+Annie app v.2.0
