@@ -8,7 +8,8 @@
 Get a recommended menu and find a nearby restaurant:
 
 - Click ‘let me help you’ button <br />
-![getFood](client/Images/getFood.png| width=200) <br /><br />
+![getFood](client/Images/getFood.png) <br /><br />
+<img src="client/Images/getFood.png" width="200">
 
 - Add options as many as you want, and click ‘show me the menu’ button <br />
 ![foodOption](client/Images/foodOption.png) <br /><br />
