@@ -10,7 +10,7 @@ Get a recommended menu and find a nearby restaurant:
 -  <br />
 
 - Click ‘let me help you’ button <br />
-![getFood](client/images/getFood.png) <br /><br />
+![getFood](client/Images/getFood.png) <br /><br />
 
 - Add options as many as you want, and click ‘show me the menu’ button <br />
 ![foodOption](client/images/foodOption.png) <br /><br />
